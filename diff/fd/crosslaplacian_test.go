@@ -36,7 +36,7 @@ func (w WrapperCL) CrossLaplacian(x, y []float64) float64 {
 	z := w.constructZ(x, y)
 	hess := mat.NewSymDense(len(z), nil)
 	w.Tester.Hess(hess, z)
-	// The LaplacianTwo is the trace of the off-diagonal block of the Hessian.
+	// The CrossLaplacian is the trace of the off-diagonal block of the Hessian.
 	var l float64
 	for i := 0; i < len(x); i++ {
 		l += hess.At(i, i+len(x))
@@ -94,7 +94,7 @@ func TestCrossLaplacian(t *testing.T) {
 		got := CrossLaplacian(test.l.Func, test.x, test.y, test.settings)
 		want := test.l.CrossLaplacian(test.x, test.y)
 		if !floats.EqualWithinAbsOrRel(got, want, test.tol, test.tol) {
-			t.Errorf("Cas %d: LaplacianTwo mismatch serial. got %v, want %v", cas, got, want)
+			t.Errorf("Cas %d: CrossLaplacian mismatch serial. got %v, want %v", cas, got, want)
 		}
 
 		// Test that concurrency works.

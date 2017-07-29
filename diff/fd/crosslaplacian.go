@@ -16,7 +16,7 @@ import (
 // The two input vector lengths must be the same.
 //
 // Finite difference formula and other options are specified by settings. If
-// settings is nil, LaplacianTwo will be estimated using the Forward formula and
+// settings is nil, CrossLaplacian will be estimated using the Forward formula and
 // a default step size.
 //
 // CrossLaplacian panics if the two input vectors are not the same length, or if
@@ -24,10 +24,10 @@ import (
 func CrossLaplacian(f func(x, y []float64) float64, x, y []float64, settings *Settings) float64 {
 	n := len(x)
 	if n == 0 {
-		panic("laplaciantwo: x has zero length")
+		panic("crosslaplacian: x has zero length")
 	}
 	if len(x) != len(y) {
-		panic("laplaciantwo: input vector length mismatch")
+		panic("crosslaplacian: input vector length mismatch")
 	}
 
 	// Default settings.
