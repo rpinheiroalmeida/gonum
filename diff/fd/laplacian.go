@@ -8,7 +8,7 @@ import "sync"
 
 // Laplacian computes the Laplacian of the multivariate function f at the location
 // x. That is, Laplacian returns
-//  ∇_x · ∇_x f(x,y) = \sum_i ∂^2 f(x)/∂x_i ∂x_i
+//  ∆ f(x) = ∇ · ∇ f(x) = \sum_i ∂^2 f(x)/∂x_i^2
 // The finite difference formula and other options are specified by settings.
 // The order of the difference formula must be 2 or Laplacian will panic.
 func Laplacian(f func(x []float64) float64, x []float64, settings *Settings) float64 {
