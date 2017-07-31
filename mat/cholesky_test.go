@@ -162,7 +162,7 @@ func TestSolveTwoChol(t *testing.T) {
 		}
 
 		var x Dense
-		x.solveTwoChol(&chola, &cholb)
+		x.SolveTwoChol(&chola, &cholb)
 
 		var ans Dense
 		ans.Mul(test.a, &x)
